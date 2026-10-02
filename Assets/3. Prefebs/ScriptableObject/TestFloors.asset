@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fa05e9fa5da75448e1f70026e10008, type: 3}
+  m_Name: TestFloors
+  m_EditorClassIdentifier: Assembly-CSharp::Floor
+  floor1:
+    floorWidth: 15
+    floorLength: 10
+    soil: {fileID: 11400000, guid: 00b80df32f71bca4da3c2d74e7efc6a5, type: 2}
+    Minerals:
+    - mineralTileBase: {fileID: 11400000, guid: 746506d252286114a9f95a4a8625ed58, type: 2}
+      min: 5
+      max: 10
+    - mineralTileBase: {fileID: 11400000, guid: 8e082f183a5dd914d854d0f6565b3470, type: 2}
+      min: 3
+      max: 5
+    - mineralTileBase: {fileID: 11400000, guid: 3d274b679bb648a429b6f32747531808, type: 2}
+      min: 1
+      max: 3
+  floor2:
+    floorWidth: 0
+    floorLength: 0
+    soil: {fileID: 0}
+    Minerals: []
+  floor3:
+    floorWidth: 0
+    floorLength: 0
+    soil: {fileID: 0}
+    Minerals: []
+  floor4:
+    floorWidth: 0
+    floorLength: 0
+    soil: {fileID: 0}
+    Minerals: []
+  floor5:
+    floorWidth: 0
+    floorLength: 0
+    soil: {fileID: 0}
+    Minerals: []

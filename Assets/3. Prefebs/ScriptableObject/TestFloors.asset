@@ -27,22 +27,88 @@ MonoBehaviour:
       min: 1
       max: 3
   floor2:
-    floorWidth: 0
-    floorLength: 0
-    soil: {fileID: 0}
-    Minerals: []
+    floorWidth: 15
+    floorLength: 10
+    soil: {fileID: 11400000, guid: 32a8d916a4c14354bb215a2efa986208, type: 2}
+    Minerals:
+    - mineralTileBase: {fileID: 11400000, guid: e3baa0e68f1ba4f4180f4a7bab9bed85, type: 2}
+      min: 7
+      max: 15
+    - mineralTileBase: {fileID: 11400000, guid: ff7f1bf39bf325a46a4ecd7bde9e8431, type: 2}
+      min: 5
+      max: 10
+    - mineralTileBase: {fileID: 11400000, guid: 2c7de3230e00752428ec8455c2cdc774, type: 2}
+      min: 3
+      max: 7
+    - mineralTileBase: {fileID: 11400000, guid: f5afc3d238a16b6408af9bc6eacd608c, type: 2}
+      min: 3
+      max: 5
+    - mineralTileBase: {fileID: 11400000, guid: 4b29172af716e994494f76837079448a, type: 2}
+      min: 0
+      max: 3
   floor3:
-    floorWidth: 0
-    floorLength: 0
-    soil: {fileID: 0}
-    Minerals: []
+    floorWidth: 15
+    floorLength: 10
+    soil: {fileID: 11400000, guid: f7620b4235965b44da91522af7261267, type: 2}
+    Minerals:
+    - mineralTileBase: {fileID: 11400000, guid: e7fe0b02f27ce9b4c9661c556256057e, type: 2}
+      min: 7
+      max: 15
+    - mineralTileBase: {fileID: 11400000, guid: 878b1c2452074fa47abef4658b1e5861, type: 2}
+      min: 5
+      max: 10
+    - mineralTileBase: {fileID: 11400000, guid: ea9b7d43c7c9b614d9bf3219f7aaa31f, type: 2}
+      min: 4
+      max: 10
+    - mineralTileBase: {fileID: 11400000, guid: b1ac3bbc4bac55240aac949925ee9d74, type: 2}
+      min: 2
+      max: 6
+    - mineralTileBase: {fileID: 11400000, guid: e4a30a82c0a3d114ca393a960efa9ff1, type: 2}
+      min: 1
+      max: 4
+    - mineralTileBase: {fileID: 11400000, guid: 83ae20387d5455d4084a15a3873b0e93, type: 2}
+      min: 1
+      max: 4
   floor4:
-    floorWidth: 0
-    floorLength: 0
-    soil: {fileID: 0}
-    Minerals: []
+    floorWidth: 15
+    floorLength: 10
+    soil: {fileID: 11400000, guid: 27d80463ac6470b428a611389a69d4c0, type: 2}
+    Minerals:
+    - mineralTileBase: {fileID: 11400000, guid: 1dfae6eab3f492b439e3ae3c2050f0e1, type: 2}
+      min: 7
+      max: 15
+    - mineralTileBase: {fileID: 11400000, guid: 7fb0e3b328787344698dc1bca18ac182, type: 2}
+      min: 3
+      max: 8
+    - mineralTileBase: {fileID: 11400000, guid: ee3defe1683fe094e9c1173c632b3a51, type: 2}
+      min: 2
+      max: 6
+    - mineralTileBase: {fileID: 11400000, guid: 668c7427066e4bb44ae26fe9f67e6fef, type: 2}
+      min: 1
+      max: 4
+    - mineralTileBase: {fileID: 11400000, guid: 9467e26959020a14882e3199b8942dfa, type: 2}
+      min: 1
+      max: 4
   floor5:
-    floorWidth: 0
-    floorLength: 0
-    soil: {fileID: 0}
-    Minerals: []
+    floorWidth: 15
+    floorLength: 10
+    soil: {fileID: 11400000, guid: 57e9999100d74ca429d424e921c8e3c7, type: 2}
+    Minerals:
+    - mineralTileBase: {fileID: 11400000, guid: 28a825a447c3d0a4e9df2c08598b46bb, type: 2}
+      min: 3
+      max: 10
+    - mineralTileBase: {fileID: 11400000, guid: 0601db22e1ef45546ac403a5da2ef342, type: 2}
+      min: 3
+      max: 8
+    - mineralTileBase: {fileID: 11400000, guid: 2cc766d2422d4db4eb9804d8be4e7185, type: 2}
+      min: 3
+      max: 7
+    - mineralTileBase: {fileID: 11400000, guid: 58e40be755925bf4286431d1dbc98ad5, type: 2}
+      min: 2
+      max: 5
+    - mineralTileBase: {fileID: 11400000, guid: 5dae4734997495b4eac78b29a9a90a51, type: 2}
+      min: 1
+      max: 2
+    - mineralTileBase: {fileID: 11400000, guid: 15f26a83730035347b728b13993ad5b9, type: 2}
+      min: 0
+      max: 1

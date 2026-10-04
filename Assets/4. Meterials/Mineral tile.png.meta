@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 446bc149543178b4684674fe3161ec6c
+guid: 21a9ae2969771b040b9b3c5916c8f1d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4359593079180627443
-    second: Mineral tile_0
+      213: -4810037807639084570
+    second: Mineral tile2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 126
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,145 +113,35 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1Floor_Soil
+      name: Mineral tile2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 128
-        height: 128
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d02ff2e413d9f73c0800000000000000
-      internalID: -4359593079180627443
+      spriteID: 6e1497f39105f3db0800000000000000
+      internalID: -4810037807639084570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1Floor_Stone
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 81f565a9be4e6964eb8524144eca449e
-      internalID: 333868945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1Floor_Copper
-      rect:
-        serializedVersion: 2
-        x: 257
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 57bcfa78047ac4a488e9f98278b14a99
-      internalID: -828224778
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1Floor_Lead
-      rect:
-        serializedVersion: 2
-        x: 385
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ead50227f113167419e0e7f62c4e7245
-      internalID: 1965061910
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2Floor_Soil
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 378
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fadcac3546980cc44b4fc2a50f5442db
-      internalID: -1604778285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2Floor_Stone
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba11ce14a5489a94b9601897bb8dd8ce
-      internalID: -1216796839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2Floor_Copper
+      name: Mineral tile2_1
       rect:
         serializedVersion: 2
         x: 256
-        y: 384
-        width: 128
-        height: 128
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,42 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d452eae98e745094088651c613b60ea7
-      internalID: 1915460248
+      spriteID: ff164b3565847404ab5c2cb72a43857a
+      internalID: -1730512067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Floor_Lead
-      rect:
-        serializedVersion: 2
-        x: 385
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0cb2f61266157ec4cbaf3a6dec267a95
-      internalID: -251657372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2Floor_Steel
+      name: Mineral tile2_2
       rect:
         serializedVersion: 2
         x: 512
-        y: 384
-        width: 128
-        height: 128
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fa1ac39ea0d54241b95969ca5b51074
-      internalID: 1447200401
+      spriteID: 7ba87affa91e0c8439cf08cb8c43889c
+      internalID: 543027838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Floor_Gold
+      name: Mineral tile2_3
       rect:
         serializedVersion: 2
-        x: 640
-        y: 384
-        width: 128
-        height: 128
+        x: 768
+        y: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,20 +194,306 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0236fde720fdb4a4a8f1df5cbe138bd9
-      internalID: -1978854373
+      spriteID: 22922d7d2bcf418418037eb8859c843b
+      internalID: 398023437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3Floor_Soil
+      name: Mineral tile2_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4026f834b2ca8cf47a57ce2bf333fa02
+      internalID: 1641574171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cd884ce0d9ebc84e99c4fc39503f291
+      internalID: -518517250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_6
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ea7a2c0e95b124fa8de88b85021bc7
+      internalID: -1802875480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddfe4b9765251db45a7515e22f64fb46
+      internalID: -561135172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a014487bb10b7434d90db49792fe68c0
+      internalID: 1838603473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_9
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3321b4a4b81f324e8377589d75da6e0
+      internalID: -325810013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f058097a5d431124da763bc2389099c0
+      internalID: 887488404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_11
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6642ee88af4f545b620b3c27b11ddb
+      internalID: 108947435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcbbaa8f01c8ce4419d1deede3249e6d
+      internalID: 1050104676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67838a67d54ba2c40961965d809f1446
+      internalID: 1434118115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2638e2e66d9d66449aac048ba4f4a22c
+      internalID: -567322789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_15
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f19661900037f247aebae2133359f28
+      internalID: -1802839682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_16
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2d7f9163a21e8d46bbec9a83f5bee41
+      internalID: -1193987608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_17
       rect:
         serializedVersion: 2
         x: 0
         y: 256
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,42 +502,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efd6d9e2c77878b478268c513c3fe3c4
-      internalID: 1735954194
+      spriteID: 181d9609358bcd046812ef6eaaf66922
+      internalID: 1184480746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3Floor_Copper
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63637d093d432464e8ff6dd9253f3942
-      internalID: -85053175
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3Floor_Lead
+      name: Mineral tile2_18
       rect:
         serializedVersion: 2
         x: 256
         y: 256
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -392,42 +524,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 130bded401807074997a7aa69c3f0f5f
-      internalID: 1413068313
+      spriteID: fafcc3ad24c9cbd44b89ecb564388812
+      internalID: 179710211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3Floor_Steel
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdf0790975995af4fb9278fcb9159a3f
-      internalID: 1155574704
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3Floor_Gold
+      name: Mineral tile2_19
       rect:
         serializedVersion: 2
         x: 512
         y: 256
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,42 +546,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39e2703f2560b71488d9266abb959e33
-      internalID: 1095294062
+      spriteID: 1220b54eb8089e74dbafa94e3263d61e
+      internalID: -1054334700
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3Floor_Obsidian
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 817ac4786feffde48b615e22867b6586
-      internalID: 170361118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3Floor_Sapphire
+      name: Mineral tile2_20
       rect:
         serializedVersion: 2
         x: 768
         y: 256
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -480,174 +568,64 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2360a58ab2384d0488dc3543220e3938
-      internalID: -978655933
+      spriteID: 9043b298aa75c424abe230240d7903a7
+      internalID: -149939323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4Floor_Soil
+      name: Mineral tile2_21
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a3c6cbca3ed6e4d9a39729be00512d
+      internalID: -300771075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_22
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 456a3f59aad32534f88ebe92e40f1940
+      internalID: -316209397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_23
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef1d18a27ed8ca941b526a986c1ec795
-      internalID: 526487498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4Floor_Steel
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0bdfdc75cff9fa4b82100c2af255839
-      internalID: -439712399
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4Floor_Gold
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: feaa8f4b6e4abb84c910d05c454635d7
-      internalID: 1265754413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4Floor_Obsidian
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30326c354d99dc845855340e8f53e3c4
-      internalID: 1872301906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4Floor_Sapphire
-      rect:
-        serializedVersion: 2
-        x: 513
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf63eef2fe008564d848c28e97bda3de
-      internalID: -973951360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4Floor_ Emerald
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae4af4463248d1748942387de5d250e0
-      internalID: 1348960783
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5Floor_Soil
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: afdd8b141f7b03244aadf16454ff51ae
-      internalID: -1409721182
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5Floor_Gold
-      rect:
-        serializedVersion: 2
-        x: 128
         y: 0
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -656,20 +634,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f7325c6a19189248b761b7fc58e9a12
-      internalID: 711117181
+      spriteID: bb3e08bc5e0a76344a5e9344eaa02604
+      internalID: -833133360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5Floor_Obsidian
+      name: Mineral tile2_24
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -678,42 +656,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cc454bf22bf6b843b989954e4bd940d
-      internalID: -540850402
+      spriteID: e8ab26a096056504b9dab21f0e489794
+      internalID: -1730748728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5Floor_Sapphire
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 505a0b9dde4cfe646a304bee3d89ca9c
-      internalID: 324046081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5Floor_ Emerald
+      name: Mineral tile2_25
       rect:
         serializedVersion: 2
         x: 512
         y: 0
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -722,42 +678,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff1091aa63ef9a34f82505f5388d920f
-      internalID: -1624837195
+      spriteID: 820e24241fc603349b4b35f54448333e
+      internalID: -894530136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5Floor_Ruby
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e1f820187f34a034ca4e79d3c21fe19a
-      internalID: -195172111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5Floor_Dia
+      name: Mineral tile2_26
       rect:
         serializedVersion: 2
         x: 768
         y: 0
-        width: 128
-        height: 128
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -766,8 +700,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce5cf89c0828b8d458e5023b728d45d2
-      internalID: 29092242
+      spriteID: 0569ff3961675de40bfb8be33faa41ae
+      internalID: -1799630571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_27
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb36fe0c137bf944faa6d205796f498b
+      internalID: 937181990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_28
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38916c03e60fed4496b2eebebc28bb4
+      internalID: -1167941109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mineral tile2_29
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cb0358538111724abce4eaed28a0a25
+      internalID: 1359821884
       vertices: []
       indices: 
       edges: []
@@ -776,7 +776,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6794b0d951f6ec0499128d7c1e15b87d
+    spriteID: 74319b0c2b1bcda4dab88a6eb6ae42ba
     internalID: 0
     vertices: []
     indices: 
@@ -786,45 +786,38 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      1Floor_Copper: -828224778
-      1Floor_Lead: 1965061910
-      1Floor_Soil: -4359593079180627443
-      1Floor_Stone: 333868945
-      2Floor_Copper: 1915460248
-      2Floor_Gold: -1978854373
-      2Floor_Lead: -251657372
-      2Floor_Soil: -1604778285
-      2Floor_Steel: 1447200401
-      2Floor_Stone: -1216796839
-      3Floor_Copper: -85053175
-      3Floor_Gold: 1095294062
-      3Floor_Lead: 1413068313
-      3Floor_Obsidian: 170361118
-      3Floor_Sapphire: -978655933
-      3Floor_Soil: 1735954194
-      3Floor_Steel: 1155574704
-      4Floor_ Emerald: 1348960783
-      4Floor_Gold: 1265754413
-      4Floor_Obsidian: 1872301906
-      4Floor_Sapphire: -973951360
-      4Floor_Soil: 526487498
-      4Floor_Steel: -439712399
-      5Floor_ Emerald: -1624837195
-      5Floor_Dia: 29092242
-      5Floor_Gold: 711117181
-      5Floor_Obsidian: -540850402
-      5Floor_Ruby: -195172111
-      5Floor_Sapphire: 324046081
-      5Floor_Soil: -1409721182
-      Mineral tile_13: -368102032
-      Mineral tile_15Mineral tile_15: -85053175
-      Mineral tile_27: -1685002606
-      Mineral tile_4: -1588890457
-      Mineral tile_5: -297049616
-      Mineral tile_6: 978642458
-      copper: -85053175
+      Mineral tile2_0: -4810037807639084570
+      Mineral tile2_1: -1730512067
+      Mineral tile2_10: 887488404
+      Mineral tile2_11: 108947435
+      Mineral tile2_12: 1050104676
+      Mineral tile2_13: 1434118115
+      Mineral tile2_14: -567322789
+      Mineral tile2_15: -1802839682
+      Mineral tile2_16: -1193987608
+      Mineral tile2_17: 1184480746
+      Mineral tile2_18: 179710211
+      Mineral tile2_19: -1054334700
+      Mineral tile2_2: 543027838
+      Mineral tile2_20: -149939323
+      Mineral tile2_21: -300771075
+      Mineral tile2_22: -316209397
+      Mineral tile2_23: -833133360
+      Mineral tile2_24: -1730748728
+      Mineral tile2_25: -894530136
+      Mineral tile2_26: -1799630571
+      Mineral tile2_27: 937181990
+      Mineral tile2_28: -1167941109
+      Mineral tile2_29: 1359821884
+      Mineral tile2_3: 398023437
+      Mineral tile2_4: 1641574171
+      Mineral tile2_5: -518517250
+      Mineral tile2_6: -1802875480
+      Mineral tile2_7: -561135172
+      Mineral tile2_8: 1838603473
+      Mineral tile2_9: -325810013
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

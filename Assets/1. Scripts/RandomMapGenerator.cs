@@ -28,16 +28,11 @@ public class RandomMapGenerator : MonoBehaviour
     void SetMap()
     {
         startPosition = new Vector2(transform.position.x, transform.position.y); //시작위치 초기화
-        ShuffleFloorXY(floors.floor1.floorWidth, floors.floor1.floorLength, autoSeed); //1층 세팅
-        CreateTile(floors.floor1);
-        ShuffleFloorXY(floors.floor2.floorWidth, floors.floor2.floorLength, autoSeed); //1층 세팅
-        CreateTile(floors.floor2);
-        ShuffleFloorXY(floors.floor3.floorWidth, floors.floor3.floorLength, autoSeed); //1층 세팅
-        CreateTile(floors.floor3);
-        ShuffleFloorXY(floors.floor4.floorWidth, floors.floor4.floorLength, autoSeed); //1층 세팅
-        CreateTile(floors.floor4);
-        ShuffleFloorXY(floors.floor5.floorWidth, floors.floor5.floorLength, autoSeed); //1층 세팅
-        CreateTile(floors.floor5);
+        for (int i = 0; i < 5; i++)
+        {
+            ShuffleFloorXY(floors.floorData[i].floorWidth, floors.floorData[i].floorLength, autoSeed); //1층 세팅
+            CreateTile(floors.floorData[i]);
+        }
 
     }
 
@@ -59,7 +54,7 @@ public class RandomMapGenerator : MonoBehaviour
         while (n > -1)
         {
             Vector3Int vec = new Vector3Int((int)floorCoordinate[n].x, (int)floorCoordinate[n].y, 0);
-            tilemap.SetTile(vec, floor.soil);
+            tilemap.SetTile(vec, floor.soilTile);
             n--;
         }
     }

@@ -11,16 +11,8 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(fileName = "New Floors Data", menuName = "MyGame/Floors")]
 public class Floor : ScriptableObject
 {
-    [Header("1층")]
-    public FloorData floor1;
-    [Header("2층")]
-    public FloorData floor2;
-    [Header("3층")]
-    public FloorData floor3;
-    [Header("4층")]
-    public FloorData floor4;
-    [Header("5층")]
-    public FloorData floor5;
+    [Header("층 데이터")]
+    public FloorData[] floorData;
 }
 
 //각 층의 광물 데이터
@@ -31,8 +23,10 @@ public class FloorData
     public int floorWidth;
     [Tooltip("해당 층의 세로 칸 수")]
     public int floorLength;
-    [Tooltip("해당 층의 흙 타일 베이스")]
-    public TileBase soil;
+    [Tooltip("해당 층의 흙 타일")]
+    public TileBase soilTile;
+    [Tooltip("해당 층의 뒷배경 타일")]
+    public TileBase backTile;
     [Tooltip("해당 층의 등장 광물")]
     public MineralData[] Minerals;
 }

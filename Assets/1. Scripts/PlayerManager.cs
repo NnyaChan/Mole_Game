@@ -12,6 +12,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Rigidbody2D rigid; //플레이어의 리지드바디
     [SerializeField] SpriteRenderer spriteRenderer; // 플레이어의 스프라이트랜더러
     [SerializeField] private LayerMask groundLayer; //바닥으로 인식할 레이어.
+    [SerializeField] Sprite normalSprite; //비워두면 시작 시점의 스프라이트를 사용
+    [SerializeField] Sprite climbSprite;  //벽타기 스프라이트
+
     private float rayGroundDistance = 1f; //레이캐스트를 쏠 거리.
     private float lookAheadDistance = 0.1f; // 레이캐스트를 쏘는 방향으로 보정할 거리
     public Tilemap backTilemap; //뒷배경 타일맵
@@ -25,6 +28,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        if (normalSprite == null) normalSprite = spriteRenderer.sprite;
     }
 
     void Update()
@@ -36,6 +40,7 @@ public class PlayerManager : MonoBehaviour
             if (climbTime <= 0 && IsGrounded() && rigid.gravityScale == 0)
             {
                 isClimb = false;
+                spriteRenderer.sprite = normalSprite;
                 rigid.gravityScale = 1;
                 Debug.Log("벽타기 모드 종료");
             }
@@ -74,6 +79,7 @@ public class PlayerManager : MonoBehaviour
         {
             climbTime = 1f; // 벽타기 시작 후 1초동안 벽타기 중지를 불가하게 만듬.
             isClimb = true;
+            spriteRenderer.sprite = climbSprite;
             rigid.gravityScale = 0;
             if (backTilemap.GetTile(backTilemap.WorldToCell(this.transform.position + (Vector3)inputVec)) != null)
             {

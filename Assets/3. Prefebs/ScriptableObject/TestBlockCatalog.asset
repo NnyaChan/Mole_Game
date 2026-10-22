@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4a13345ba1fdf4a8922813df146761, type: 3}
+  m_Name: TestBlockCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::BlockCatalog
+  floorSource: {fileID: 11400000, guid: 6b730e18911070e409cf2fdf112fa8ba, type: 2}
+  tiles:
+  - tile: {fileID: 11400000, guid: 00b80df32f71bca4da3c2d74e7efc6a5, type: 2}
+    type: 0
+  - tile: {fileID: 11400000, guid: 746506d252286114a9f95a4a8625ed58, type: 2}
+    type: 1
+  - tile: {fileID: 11400000, guid: 8e082f183a5dd914d854d0f6565b3470, type: 2}
+    type: 2
+  - tile: {fileID: 11400000, guid: 3d274b679bb648a429b6f32747531808, type: 2}
+    type: 3
+  - tile: {fileID: 11400000, guid: 32a8d916a4c14354bb215a2efa986208, type: 2}
+    type: 0
+  - tile: {fileID: 11400000, guid: e3baa0e68f1ba4f4180f4a7bab9bed85, type: 2}
+    type: 1
+  - tile: {fileID: 11400000, guid: ff7f1bf39bf325a46a4ecd7bde9e8431, type: 2}
+    type: 2
+  - tile: {fileID: 11400000, guid: 2c7de3230e00752428ec8455c2cdc774, type: 2}
+    type: 3
+  - tile: {fileID: 11400000, guid: f5afc3d238a16b6408af9bc6eacd608c, type: 2}
+    type: 4
+  - tile: {fileID: 11400000, guid: 4b29172af716e994494f76837079448a, type: 2}
+    type: 5
+  - tile: {fileID: 11400000, guid: f7620b4235965b44da91522af7261267, type: 2}
+    type: 0
+  - tile: {fileID: 11400000, guid: e7fe0b02f27ce9b4c9661c556256057e, type: 2}
+    type: 2
+  - tile: {fileID: 11400000, guid: 878b1c2452074fa47abef4658b1e5861, type: 2}
+    type: 3
+  - tile: {fileID: 11400000, guid: ea9b7d43c7c9b614d9bf3219f7aaa31f, type: 2}
+    type: 4
+  - tile: {fileID: 11400000, guid: b1ac3bbc4bac55240aac949925ee9d74, type: 2}
+    type: 5
+  - tile: {fileID: 11400000, guid: e4a30a82c0a3d114ca393a960efa9ff1, type: 2}
+    type: 6
+  - tile: {fileID: 11400000, guid: 83ae20387d5455d4084a15a3873b0e93, type: 2}
+    type: 7
+  - tile: {fileID: 11400000, guid: 27d80463ac6470b428a611389a69d4c0, type: 2}
+    type: 0
+  - tile: {fileID: 11400000, guid: 1dfae6eab3f492b439e3ae3c2050f0e1, type: 2}
+    type: 4
+  - tile: {fileID: 11400000, guid: 7fb0e3b328787344698dc1bca18ac182, type: 2}
+    type: 5
+  - tile: {fileID: 11400000, guid: ee3defe1683fe094e9c1173c632b3a51, type: 2}
+    type: 6
+  - tile: {fileID: 11400000, guid: 668c7427066e4bb44ae26fe9f67e6fef, type: 2}
+    type: 7
+  - tile: {fileID: 11400000, guid: 9467e26959020a14882e3199b8942dfa, type: 2}
+    type: 8
+  - tile: {fileID: 11400000, guid: 57e9999100d74ca429d424e921c8e3c7, type: 2}
+    type: 0
+  - tile: {fileID: 11400000, guid: 28a825a447c3d0a4e9df2c08598b46bb, type: 2}
+    type: 5
+  - tile: {fileID: 11400000, guid: 0601db22e1ef45546ac403a5da2ef342, type: 2}
+    type: 6
+  - tile: {fileID: 11400000, guid: 2cc766d2422d4db4eb9804d8be4e7185, type: 2}
+    type: 7
+  - tile: {fileID: 11400000, guid: 58e40be755925bf4286431d1dbc98ad5, type: 2}
+    type: 8
+  - tile: {fileID: 11400000, guid: 5dae4734997495b4eac78b29a9a90a51, type: 2}
+    type: 9
+  - tile: {fileID: 11400000, guid: 15f26a83730035347b728b13993ad5b9, type: 2}
+    type: 10
+  mineralTimes:
+  - 1.44
+  - 1.44
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - 1.08
+  - 1.08
+  - 1.17
+  - 1.26
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  - 0.72
+  - 0.72
+  - 0.78
+  - 0.84
+  - 0.84
+  - 0.9
+  - -1
+  - -1
+  - -1
+  - -1
+  - 0.36
+  - 0.36
+  - 0.39
+  - 0.42
+  - 0.42
+  - 0.45
+  - 0.48
+  - 0.48
+  - -1
+  - -1
+  - 0.36
+  - 0.36
+  - 0.39
+  - 0.42
+  - 0.42
+  - 0.45
+  - 0.48
+  - 0.48
+  - 0.51
+  - 0.57
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.3
+  soilTimes:
+  - 1.2
+  - -1
+  - -1
+  - -1
+  - -1
+  - 0.9
+  - 1.2
+  - -1
+  - -1
+  - -1
+  - 0.6
+  - 0.9
+  - 1.2
+  - -1
+  - -1
+  - 0.3
+  - 0.6
+  - 0.9
+  - 1.2
+  - -1
+  - 0
+  - 0
+  - 0.3
+  - 0.3
+  - 0.6
+  - 0
+  - 0
+  - 0.1
+  - 0.1
+  - 0.1

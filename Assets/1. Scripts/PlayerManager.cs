@@ -60,7 +60,7 @@ public class PlayerManager : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         inputVec = context.ReadValue<Vector2>();
-        climbTime = 0.2f;
+        climbTime = 0.5f;
         if (inputVec.x > 0 && isFliped == false)
         {
             spriteRenderer.flipX = true;

@@ -14,6 +14,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; //바닥으로 인식할 레이어.
     [SerializeField] Sprite normalSprite; //비워두면 시작 시점의 스프라이트를 사용
     [SerializeField] Sprite climbSprite;  //벽타기 스프라이트
+    [SerializeField] int surfaceClimbRows = 1; //맵 최상단 위로 벽타기가 가능한 줄 수 (1 = 지상 한 줄)
+    Tilemap frontTilemap;
+    RandomMapGenerator generator;
 
     private float rayGroundDistance = 1f; //레이캐스트를 쏠 거리.
     private float lookAheadDistance = 0.1f; // 레이캐스트를 쏘는 방향으로 보정할 거리
@@ -29,12 +32,14 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         if (normalSprite == null) normalSprite = spriteRenderer.sprite;
+        frontTilemap = FindAnyObjectByType<TileBreaker>().frontTilemap;
+        generator = FindAnyObjectByType<RandomMapGenerator>();
     }
 
     void Update()
     {
         //입력받은 inputVec값을 현 좌표에 더해주는 방식
-        if (isClimb && backTilemap.GetTile(backTilemap.WorldToCell(this.transform.position + (new Vector3(inputVec.x, inputVec.y, 0) * speed * Time.deltaTime))) != null)
+        if (isClimb && CanClimbTo(this.transform.position + (new Vector3(inputVec.x, inputVec.y, 0) * speed * Time.deltaTime), true))
         {
             this.transform.Translate(new Vector3(inputVec.x, inputVec.y, 0) * speed * Time.deltaTime);
             if (climbTime <= 0 && IsGrounded() && rigid.gravityScale == 0)
@@ -87,6 +92,28 @@ public class PlayerManager : MonoBehaviour
             }
             Debug.Log("벽타기 모드 시작");
         }
+    }
+
+    //벽타기로 해당 위치(월드 좌표)로 이동할 수 있는지 판정한다.
+    //allowSurfaceRow: true면 맵 최상단 위 지상 줄까지 허용 (이미 벽타기 중일 때),
+    //false면 맵 안쪽 칸만 허용 (벽타기를 시작할 때)
+    bool CanClimbTo(Vector3 worldPos, bool allowSurfaceRow)
+    {
+        Vector3Int cell = backTilemap.WorldToCell(worldPos);
+
+        if (cell.x < generator.LeftCellX || cell.x > generator.RightCellX) return false; //맵 가로 범위 밖
+        if (cell.y < generator.BottomCellY) return false; //맵 바닥 아래
+
+        //맵 안쪽: 파낸 칸(블록 없음 + 뒷배경 타일 있음)만 가능. 하늘이 보이는 빈 칸은 불가
+        if (cell.y <= generator.TopCellY)
+        {
+            return frontTilemap.GetTile(cell) == null && backTilemap.GetTile(cell) != null;
+        }
+
+        //맵 최상단 위(지상 줄): 이미 벽타기 중일 때만, 지상 줄 높이까지 허용
+        return allowSurfaceRow
+            && cell.y <= generator.TopCellY + surfaceClimbRows
+            && frontTilemap.GetTile(cell) == null;
     }
 
     // 현재 바닥에 닿아있는지 확인하는 함수

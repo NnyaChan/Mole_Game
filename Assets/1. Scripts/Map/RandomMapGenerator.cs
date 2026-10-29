@@ -13,6 +13,17 @@ public class RandomMapGenerator : MonoBehaviour
 
     //맵 최상단 줄의 셀 Y좌표
     public int TopCellY => (int)originPosition.y;
+    public int LeftCellX => (int)originPosition.x;
+    public int RightCellX => LeftCellX + floors.floorData[0].floorWidth - 1;
+    public int BottomCellY
+    {
+        get
+        {
+            int rows = 0;
+            foreach (FloorData data in floors.floorData) rows += data.floorLength;
+            return TopCellY - rows + 1; //맵 맨 아래 줄의 셀 Y
+        }
+    }
 
     void Awake()
     {

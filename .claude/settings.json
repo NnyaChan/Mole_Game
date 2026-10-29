@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(**/*.meta)",
+      "Edit(**/*.unity)",
+      "Edit(**/*.prefab)",
+      "Edit(**/*.asset)",
+      "Edit(**/*.controller)",
+      "Edit(**/*.anim)",
+      "Read(./Library/**)",
+      "Read(./Temp/**)"
+    ]
+  }
+}

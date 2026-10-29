@@ -71,7 +71,16 @@ public class BlockCatalog : ScriptableObject
         }
 
         int m = (int)type - 1; //Stone = 0
+
+        //그 층의 흙을 캘 수 없는 도구라면, 그 층의 광물도 캘 수 없다.
+        if (floorIndex >= 0 && floorIndex < FloorCount
+            && ReadTable(soilTimes, t * FloorCount + floorIndex) < 0f)
+        {
+            return -1f;
+        }
+
         return ReadTable(mineralTimes, t * MineralCount + m);
+
     }
 
     float ReadTable(float[] table, int index)

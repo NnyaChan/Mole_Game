@@ -34,6 +34,7 @@ public class MiningController : MonoBehaviour
     public event Action<Vector3Int, float> OnMiningStarted; //(칸, 걸리는 시간) 애니메이션용
     public event Action OnMiningCancelled;
     public event Action<Vector3Int> OnBlockBroken;
+    public event Action<Vector3Int, BlockType> OnBlockMined; //(칸, 블록 종류) 획득 광물 집계용. 카탈로그에 없는 타일은 발생하지 않음
 
     void Awake()
     {
@@ -145,9 +146,11 @@ public class MiningController : MonoBehaviour
     //실제 파괴 처리. 기존 TileBreaker.ClickBlock의 파괴 로직과 동일하다.
     void BreakBlock(Vector3Int cell, int floorIndex)
     {
+        bool known = catalog.TryGetBlockType(frontTilemap.GetTile(cell), out BlockType type); //타일을 지우기 전에 종류를 확인
         backTilemap.SetTile(cell, floor.floorData[floorIndex].backTile);
         frontTilemap.SetTile(cell, null);
         OnBlockBroken?.Invoke(cell);
+        if (known) OnBlockMined?.Invoke(cell, type);
     }
 
     bool InRange(Vector3Int cell)

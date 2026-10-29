@@ -80,9 +80,18 @@ public class PlayerManager : MonoBehaviour
         frontAnimator.Play(MineStateHash, 0, 0f);
     }
 
+    //일차 종료 연출(정산/암전) 중에는 입력을 받지 않고 멈춘다.
+    bool InputLocked => GameManager.Instance != null && !GameManager.Instance.IsPlaying;
+
     void Update()
     {
-        bool walking = false;                 //지상에서 실제로 걷는 중인지 (애니메이션용)
+        if (InputLocked)
+        {
+            UpdateAnimation(false, Vector2.zero); //대기 자세로
+            return;
+        }
+
+        bool walking = false;                //지상에서 실제로 걷는 중인지 (애니메이션용)
         Vector2 climbMove = Vector2.zero;     //벽타기 중 실제로 움직이는 축 (애니메이션용, 절댓값)
 
         //입력받은 inputVec값을 현 좌표에 더해주는 방식
@@ -115,6 +124,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (InputLocked) return;
         inputVec = context.ReadValue<Vector2>();
         climbTime = 0.5f;
         if (inputVec.x > 0 && isFliped == false)
@@ -179,6 +189,7 @@ public class PlayerManager : MonoBehaviour
 
     public void ClimbCheck()
     {
+        if (InputLocked) return;
         if (climbTime > 0 && !isClimb)
         {
             climbTime = 1f; // 벽타기 시작 후 1초동안 벽타기 중지를 불가하게 만듬.

@@ -52,6 +52,11 @@ public class TileBreaker : MonoBehaviour
             armed = true;
         }
 
+        //일차 종료 연출(정산/암전) 중에는 조준 포인터를 숨기고 조준 갱신을 멈춘다.
+        bool locked = GameManager.Instance != null && !GameManager.Instance.IsPlaying;
+        if (pointer.enabled == locked) pointer.enabled = !locked;
+        if (locked) return;
+
         worldMouseTrans = Camera.main.ScreenToWorldPoint(mouseTrans); //월드좌표로 좌표변경
         direction = worldMouseTrans - player.transform.position; //방향벡터 계산
         angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg; //각도 계산

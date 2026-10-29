@@ -64,6 +64,12 @@ public class GameManager : MonoBehaviour
         string result = (zoneAtEnd == Zone.Surface) ? "지상(귀환 성공)" : "지하(조난)";
         Debug.Log($"[{Day}일차 종료] 랜턴 소진 시점 상태: {result}");
 
+        //정산 (밤 흐름: 정산 → 잠자기). 정산 화면이 씬에 없으면 화면 없이 바로 처리한다.
+        SettlementReport report = Settlement.Calculate(Data);
+        SettlementUI settlementUI = FindAnyObjectByType<SettlementUI>(FindObjectsInactive.Include);
+        if (settlementUI != null) yield return settlementUI.Show(report, Data.money);
+        Settlement.Apply(Data, report);
+
         //암전 연출. 씬에 BlackoutFader가 없으면 시간만 기다린다.
         BlackoutFader fader = FindAnyObjectByType<BlackoutFader>();
         if (fader != null) yield return fader.FadeOut(blackoutSeconds);
@@ -101,8 +107,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //획득 광물 집계: 씬이 (다시) 로드될 때마다 새 MiningController에 연결한다.
+    void OnBlockMined(Vector3Int cell, BlockType type)
+    {
+        if (type == BlockType.Soil) return; //흙은 집계 제외
+        Data.AddMineral(type);
+        Debug.Log($"[획득] {type} +1 (오늘 {Data.GetMineralCount(type)}개)");
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        MiningController mining = FindAnyObjectByType<MiningController>();
+        if (mining != null) mining.OnBlockMined += OnBlockMined; //이전 씬의 MiningController는 파괴되어 구독이 함께 사라진다
+
         State = GameState.Playing;
         if (Day > 1) Debug.Log($"[{Day}일차 시작]");
     }

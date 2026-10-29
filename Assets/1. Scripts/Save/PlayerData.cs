@@ -27,6 +27,31 @@ public class PlayerData
     public List<ItemStack> items = new List<ItemStack>();         //소모 아이템 보유량 (0개는 저장 안 함)
     public List<ItemStack> pendingOrders = new List<ItemStack>(); //배송 대기 주문 (다음 날 아침 도착)
 
+    //획득한 광물 (id = BlockType 이름, 예: "Gold"). 흙은 집계하지 않는다.
+    //까마귀가 가져간 뒤 취침 시 정산되면 비워진다. (정산 기능 전에는 비워지지 않고 쌓인다)
+    public List<ItemStack> todayMinerals = new List<ItemStack>();
+
+    public void AddMineral(BlockType type, int amount = 1)
+    {
+        if (type == BlockType.Soil || amount <= 0) return;
+
+        string id = type.ToString();
+        ItemStack stack = todayMinerals.Find(s => s.id == id);
+        if (stack == null) todayMinerals.Add(new ItemStack { id = id, count = amount });
+        else stack.count += amount;
+    }
+
+    public int GetMineralCount(BlockType type)
+    {
+        ItemStack stack = todayMinerals.Find(s => s.id == type.ToString());
+        return stack != null ? stack.count : 0;
+    }
+
+    public void ClearMinerals()
+    {
+        todayMinerals.Clear();
+    }
+
     public int GetItemCount(string id)
     {
         ItemStack stack = items.Find(s => s.id == id);
@@ -68,6 +93,10 @@ public class PlayerData
             ItemTable.TryGetMax(s.id, out int max);
             s.count = Mathf.Min(s.count, max);
         }
+
+        if (todayMinerals == null) todayMinerals = new List<ItemStack>();
+        todayMinerals.RemoveAll(s => s == null || s.count <= 0
+            || !Enum.TryParse(s.id, out BlockType t) || t == BlockType.Soil); //알 수 없는 이름/흙은 버림
 
         if (pendingOrders == null) pendingOrders = new List<ItemStack>();
         pendingOrders.RemoveAll(s => s == null || string.IsNullOrEmpty(s.id) || s.count <= 0);

@@ -20,8 +20,6 @@ public class TileBreaker : MonoBehaviour
     public int directionIndex;
     public Floor floor; //플로어 데이터 가져오기
 
-    MiningController mining;
-
     //플레이 시작 시 눌려 있던 클릭이 채굴로 이어지는 것을 막는 플래그.
     //마우스 버튼이 한 번 떼어진 것을 확인한 뒤부터 입력을 받는다.
     bool armed = false;
@@ -45,7 +43,6 @@ public class TileBreaker : MonoBehaviour
     void Awake()
     {
         if (generator == null) generator = FindAnyObjectByType<RandomMapGenerator>();
-        mining = FindAnyObjectByType<MiningController>();
     }
 
     void Update()
@@ -62,12 +59,6 @@ public class TileBreaker : MonoBehaviour
         directionIndex = Mathf.RoundToInt(angle / 45f) % 8; // 0이 위쪽방향, 그로부터 차례대로 시계방향으로.
 
         targetCell = frontTilemap.WorldToCell(player.transform.position) + Directions[directionIndex];
-
-        //채굴 중에는 타겟 셀을 바꾸지 않는다. (마우스가 다른 방향으로 움직여도 채굴 중인 칸 유지)
-        if (mining != null && mining.IsMining)
-        {
-            targetCell = mining.LockedCell;
-        }
 
         //현 시점에서는 단순히 타일의 유무로 표기되어있으나 추후 필요에 따라 태그로 변경이 필요.
         pointer.rectTransform.position = Camera.main.WorldToScreenPoint(frontTilemap.GetCellCenterWorld(targetCell));

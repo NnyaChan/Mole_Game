@@ -24,7 +24,7 @@
   1. 층 범위의 모든 좌표를 리스트에 담고 피셔-예이츠 셔플
   2. 희귀한 광물부터 `min~max`(max 포함) 사이 개수를 뽑아 리스트 뒤에서부터 배치
   3. 남은 좌표는 전부 그 층의 흙 타일
-- 데이터: `Floor` ScriptableObject (`Assets/3. Prefebs/ScriptableObject/TestFloors.asset`)
+- 데이터: `Floor` ScriptableObject (`Assets/3. Prefabs/ScriptableObject/TestFloors.asset`)
   - 층마다 `floorWidth`, `floorLength`, `soilTile`, `backTile`(파낸 뒤 배경), `Minerals[]`(타일, min, max)
 - **반드시 Tilemap `SetTile` 사용. 블록을 개별 프리팹으로 만들지 말 것.**
 

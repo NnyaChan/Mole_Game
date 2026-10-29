@@ -10,10 +10,10 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] CapsuleCollider2D collider; //플레이어의 콜라이더
     [SerializeField] Rigidbody2D rigid; //플레이어의 리지드바디
-    [SerializeField] SpriteRenderer spriteRenderer; // 플레이어의 스프라이트랜더러
+    [SerializeField] GameObject frontModel; //지상용(앞모습) 모델. Animator 컨트롤러: Mole_Front
+    [SerializeField] GameObject backModel;  //벽타기용(뒷모습) 모델. Animator 컨트롤러: Mole_Back
+    [SerializeField] bool facesLeftByDefault = true; //모델이 기본으로 왼쪽을 보고 있는지 (좌우가 반대로 나오면 체크 해제)
     [SerializeField] private LayerMask groundLayer; //바닥으로 인식할 레이어.
-    [SerializeField] Sprite normalSprite; //비워두면 시작 시점의 스프라이트를 사용
-    [SerializeField] Sprite climbSprite;  //벽타기 스프라이트
     [SerializeField] int surfaceClimbRows = 1; //맵 최상단 위로 벽타기가 가능한 줄 수 (1 = 지상 한 줄)
     Tilemap frontTilemap;
     RandomMapGenerator generator;
@@ -29,23 +29,45 @@ public class PlayerManager : MonoBehaviour
     private bool isFliped = false;
     public bool isClimb = false;
 
+    //애니메이터 파라미터 (Mole_Front: IsMoving/IsMining, Mole_Back: MoveX/MoveY)
+    static readonly int IsMovingHash = Animator.StringToHash("IsMoving");
+    static readonly int IsMiningHash = Animator.StringToHash("IsMining");
+    static readonly int MoveXHash = Animator.StringToHash("MoveX");
+    static readonly int MoveYHash = Animator.StringToHash("MoveY");
+    Animator frontAnimator;
+    Animator backAnimator;
+    MiningController mining;
+
     void Start()
     {
-        if (normalSprite == null) normalSprite = spriteRenderer.sprite;
         frontTilemap = FindAnyObjectByType<TileBreaker>().frontTilemap;
         generator = FindAnyObjectByType<RandomMapGenerator>();
+        mining = FindAnyObjectByType<MiningController>();
+
+        if (frontModel == null || backModel == null)
+        {
+            Debug.LogWarning("[플레이어] frontModel/backModel이 연결되지 않았습니다. 인스펙터에서 연결하세요.");
+            return;
+        }
+        frontAnimator = frontModel.GetComponentInChildren<Animator>(true);
+        backAnimator = backModel.GetComponentInChildren<Animator>(true);
+        SetClimbModel(false);
     }
 
     void Update()
     {
+        bool walking = false;                 //지상에서 실제로 걷는 중인지 (애니메이션용)
+        Vector2 climbMove = Vector2.zero;     //벽타기 중 실제로 움직이는 축 (애니메이션용, 절댓값)
+
         //입력받은 inputVec값을 현 좌표에 더해주는 방식
         if (isClimb && CanClimbTo(this.transform.position + (new Vector3(inputVec.x, inputVec.y, 0) * speed * Time.deltaTime), true))
         {
             this.transform.Translate(new Vector3(inputVec.x, inputVec.y, 0) * speed * Time.deltaTime);
+            climbMove = new Vector2(Mathf.Abs(inputVec.x), Mathf.Abs(inputVec.y));
             if (climbTime <= 0 && IsGrounded() && rigid.gravityScale == 0)
             {
                 isClimb = false;
-                spriteRenderer.sprite = normalSprite;
+                SetClimbModel(false);
                 rigid.gravityScale = 1;
                 Debug.Log("벽타기 모드 종료");
             }
@@ -53,11 +75,14 @@ public class PlayerManager : MonoBehaviour
         else if (IsGrounded())
         {
             this.transform.Translate(new Vector3(inputVec.x, 0, 0) * speed * Time.deltaTime);
+            walking = inputVec.x != 0;
         }
         else
         {
             Debug.Log("바닥없음");
         }
+
+        UpdateAnimation(walking, climbMove);
 
         if (climbTime > 0) { climbTime -= Time.deltaTime; }
     }
@@ -68,14 +93,62 @@ public class PlayerManager : MonoBehaviour
         climbTime = 0.5f;
         if (inputVec.x > 0 && isFliped == false)
         {
-            spriteRenderer.flipX = true;
             isFliped = true;
+            ApplyFlip();
         }
         else if (inputVec.x < 0 && isFliped == true)
         {
-            spriteRenderer.flipX = false;
             isFliped = false;
+            ApplyFlip();
         }
+    }
+
+    //벽타기 여부에 따라 앞모습/뒷모습 모델 중 하나만 켠다.
+    void SetClimbModel(bool climbing)
+    {
+        if (frontModel == null || backModel == null) return;
+        frontModel.SetActive(!climbing);
+        backModel.SetActive(climbing);
+
+        if (climbing && backAnimator != null)
+        {
+            backAnimator.SetFloat(MoveXHash, 0f);
+            backAnimator.SetFloat(MoveYHash, 0f);
+        }
+    }
+
+    //활성화된 모델의 애니메이터에만 파라미터를 보낸다.
+    //채굴 중이면 걷기보다 채굴 애니메이션이 우선이다 (트랜지션에서 처리). 벽타기 중에는 채굴 애니메이션 없음.
+    void UpdateAnimation(bool walking, Vector2 climbMove)
+    {
+        if (isClimb)
+        {
+            if (backAnimator == null) return;
+            backAnimator.SetFloat(MoveXHash, climbMove.x);
+            backAnimator.SetFloat(MoveYHash, climbMove.y);
+        }
+        else
+        {
+            if (frontAnimator == null) return;
+            frontAnimator.SetBool(IsMovingHash, walking);
+            frontAnimator.SetBool(IsMiningHash, mining != null && mining.IsMining);
+        }
+    }
+
+    //본(bone) 리깅 모델이라 flipX 대신 모델 루트의 localScale.x로 좌우를 뒤집는다.
+    void ApplyFlip()
+    {
+        float sign = (isFliped == facesLeftByDefault) ? -1f : 1f;
+        FlipModel(frontModel, sign);
+        FlipModel(backModel, sign);
+    }
+
+    void FlipModel(GameObject model, float sign)
+    {
+        if (model == null) return;
+        Vector3 s = model.transform.localScale;
+        s.x = Mathf.Abs(s.x) * sign;
+        model.transform.localScale = s;
     }
 
     public void ClimbCheck()
@@ -84,7 +157,7 @@ public class PlayerManager : MonoBehaviour
         {
             climbTime = 1f; // 벽타기 시작 후 1초동안 벽타기 중지를 불가하게 만듬.
             isClimb = true;
-            spriteRenderer.sprite = climbSprite;
+            SetClimbModel(true);
             rigid.gravityScale = 0;
             if (backTilemap.GetTile(backTilemap.WorldToCell(this.transform.position + (Vector3)inputVec)) != null)
             {

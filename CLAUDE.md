@@ -28,9 +28,9 @@ B급 병맛 감성의 2D 채굴 게임. 매일 랜덤으로 생성되는 5층 �
 ## 폴더 규칙
 
 - 스크립트: `Assets/1. Scripts/<시스템>/` (Map, Mining, Lentern, UI, ScriptableObject). 매니저류는 `1. Scripts/` 바로 아래.
-- 데이터 에셋(ScriptableObject): `Assets/3. Prefebs/ScriptableObject/` (`TestFloors.asset`, `TestBlockCatalog.asset`)
+- 데이터 에셋(ScriptableObject): `Assets/3. Prefabs/ScriptableObject/` (`TestFloors.asset`, `TestBlockCatalog.asset`)
 - 타일 에셋: `Assets/4. Meterials/Floor/...`
-- 폴더명 오타(`Lentern`, `Prefebs`, `Meterials`)는 기존 그대로 둔다. 이름 변경은 사용자가 Unity 에디터에서 직접 한다.
+- 폴더명 오타(`Lentern`, `Meterials`)는 기존 그대로 둔다. 이름 변경은 사용자가 Unity 에디터에서 직접 한다.
 
 ## 아키텍처 요약
 

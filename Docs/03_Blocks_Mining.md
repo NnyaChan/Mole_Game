@@ -24,8 +24,8 @@
 
 - 마우스 좌클릭을 **누르고 있는 동안** 시간이 쌓이고, 채굴 시간이 다 차면 블록 파괴.
 - 사거리: 플레이어 기준 상하좌우·대각선 1칸 (`maxRange = 1`)
-- 누른 채로 다른 블록을 조준하면 이어서 채굴 (`holdToContinue = true`)
-- 취소 조건: 버튼을 뗌 / 범위 이탈 / 대상 블록이 사라짐 / 일차 종료
+- 누른 채로 다른 블록을 조준하면 진행도가 리셋되고 그 블록에서 새로 채굴 (`holdToContinue = true`)
+- 취소 조건: 버튼을 뗌 / 범위 이탈 / 대상 블록이 사라짐 / 조준 칸이 바뀜(이후 새 칸에서 재시작) / 일차 종료
 - 파괴 시: 앞 타일 제거 + 그 칸에 해당 층의 뒷배경 타일 설치 (벽타기 가능 공간이 됨)
 - 진행도에 맞춰 균열 애니메이션 표시 (`BlockBreakEffect`, 프리팹 `Bteak_Animation`)
 - 이벤트: `OnMiningStarted(cell, duration)`, `OnMiningCancelled`, `OnBlockBroken(cell)`

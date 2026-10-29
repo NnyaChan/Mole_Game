@@ -26,7 +26,7 @@ public class MiningController : MonoBehaviour
     bool hasRejected;
 
     public bool IsMining { get; private set; }
-    public Vector3Int LockedCell { get; private set; } //채굴 중인 칸. 채굴 동안 타겟이 바뀌지 않도록 TileBreaker가 이 값을 사용
+    public Vector3Int LockedCell { get; private set; } //채굴 중인 칸. 조준(TileBreaker.TargetCell)이 이 칸에서 벗어나면 채굴이 리셋된다
     public float Progress => (IsMining && duration > 0f) ? Mathf.Clamp01(elapsed / duration) : 0f; //0~1
     public float Duration => duration;
     public int ToolLevel => toolLevel;
@@ -58,9 +58,17 @@ public class MiningController : MonoBehaviour
             if (!InRange(LockedCell)) { Cancel("채굴 범위를 벗어남"); return; }
             if (frontTilemap.GetTile(LockedCell) == null) { Cancel("대상 블록이 사라짐"); return; }
 
-            elapsed += Time.deltaTime;
-            if (elapsed >= duration) Complete();
-            return;
+            if (breaker.TargetCell != LockedCell)
+            {
+                //조준 칸이 바뀌면(마우스 이동/플레이어 이동) 진행도를 리셋하고, 아래에서 새 칸으로 다시 시작한다.
+                Cancel("조준 칸이 바뀜");
+            }
+            else
+            {
+                elapsed += Time.deltaTime;
+                if (elapsed >= duration) Complete();
+                return;
+            }
         }
 
         // ── 채굴 중이 아님: 시작 조건 확인 ──

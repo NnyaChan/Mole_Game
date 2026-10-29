@@ -74,7 +74,6 @@
 
 ## 🧹 정리 필요 (사용자가 Unity 에디터에서 직접)
 
-- 폴더명 오타: `Lentern`, `Meterials`, 애니메이션 `Bteak` (`Prefebs` → `Prefabs`와 `Miningcontroller.cs` → `MiningController.cs`는 정리 완료)
 - 루트의 `Endless_Run.slnx` (이전 프로젝트 잔여 파일)
 - `TileBreaker.ClickBlock`은 빈 함수 (PlayerInput 이벤트 연결 해제 후 삭제 가능)
 - `PlayerManager`의 미사용 using (`System.Xml.Serialization`, `JetBrains.Annotations`)

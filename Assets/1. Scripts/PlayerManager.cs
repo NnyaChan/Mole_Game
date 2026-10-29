@@ -30,9 +30,13 @@ public class PlayerManager : MonoBehaviour
     static readonly int IsMiningHash = Animator.StringToHash("IsMining");
     static readonly int MoveXHash = Animator.StringToHash("MoveX");
     static readonly int MoveYHash = Animator.StringToHash("MoveY");
+    static readonly int MineSpeedHash = Animator.StringToHash("MineSpeed"); //Front_Mine 상태의 Speed 배율 파라미터
+    static readonly int MineStateHash = Animator.StringToHash("Front_Mine");
+    const string MineClipName = "Front_Mine";
     Animator frontAnimator;
     Animator backAnimator;
     MiningController mining;
+    float mineClipLength; //채굴 클립 원래 길이(초). 채굴 시간에 맞춰 재생 속도를 정하는 데 쓴다
 
     void Start()
     {
@@ -48,6 +52,32 @@ public class PlayerManager : MonoBehaviour
         frontAnimator = frontModel.GetComponentInChildren<Animator>(true);
         backAnimator = backModel.GetComponentInChildren<Animator>(true);
         SetClimbModel(false);
+
+        if (frontAnimator != null && frontAnimator.runtimeAnimatorController != null)
+        {
+            foreach (AnimationClip clip in frontAnimator.runtimeAnimatorController.animationClips)
+            {
+                if (clip.name == MineClipName) { mineClipLength = clip.length; break; }
+            }
+            if (mineClipLength <= 0f) Debug.LogWarning($"[플레이어] '{MineClipName}' 클립을 찾지 못했습니다. 채굴 애니메이션 속도 보정이 꺼집니다.");
+        }
+        if (mining != null) mining.OnMiningStarted += OnMiningStarted;
+    }
+
+    void OnDestroy()
+    {
+        if (mining != null) mining.OnMiningStarted -= OnMiningStarted;
+    }
+
+    //채굴이 (새로) 시작될 때마다 호출된다. 조준 칸이 바뀌어 다시 시작하는 경우도 포함.
+    //채굴 애니메이션을 처음부터 다시 재생하고, 한 번 재생하는 시간이 채굴 시간과 같도록 속도를 맞춘다.
+    void OnMiningStarted(Vector3Int cell, float time)
+    {
+        if (frontAnimator == null || !frontModel.activeInHierarchy || time <= 0f) return;
+
+        if (mineClipLength > 0f) frontAnimator.SetFloat(MineSpeedHash, mineClipLength / time);
+        frontAnimator.SetBool(IsMiningHash, true); //Play 직후 Mine→Idle 전환이 한 프레임 끼어드는 것을 방지
+        frontAnimator.Play(MineStateHash, 0, 0f);
     }
 
     void Update()

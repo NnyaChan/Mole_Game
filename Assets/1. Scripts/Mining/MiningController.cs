@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 public class MiningController : MonoBehaviour
 {
     [SerializeField] BlockCatalog catalog;
-    [SerializeField, Range(1, 6)] int toolLevel = 1; //곡괭이 단계 (나중에 PlayerData에서 받아올 예정)
+    [SerializeField, Range(1, 6)] int toolLevel = 1; //GameManager가 씬에 없을 때만 쓰는 대체값. 평소엔 PlayerData.pickaxeLevel이 기준
     [SerializeField] bool holdToContinue = true;     //true: 누른 채로 다음 블록으로 넘어가면 계속 채굴
     [SerializeField] int maxRange = 1;               //채굴 가능 거리(칸). 1 = 상하좌우 대각선 1칸
 
@@ -29,7 +29,7 @@ public class MiningController : MonoBehaviour
     public Vector3Int LockedCell { get; private set; } //채굴 중인 칸. 조준(TileBreaker.TargetCell)이 이 칸에서 벗어나면 채굴이 리셋된다
     public float Progress => (IsMining && duration > 0f) ? Mathf.Clamp01(elapsed / duration) : 0f; //0~1
     public float Duration => duration;
-    public int ToolLevel => toolLevel;
+    public int ToolLevel => (GameManager.Instance != null) ? GameManager.Instance.Data.pickaxeLevel : toolLevel;
 
     public event Action<Vector3Int, float> OnMiningStarted; //(칸, 걸리는 시간) 애니메이션용
     public event Action OnMiningCancelled;
@@ -95,11 +95,11 @@ public class MiningController : MonoBehaviour
         }
 
         int floorIndex = floor.GetFloorIndex(generator.TopCellY - cell.y);
-        float time = catalog.GetMiningTime(toolLevel, type, floorIndex);
+        float time = catalog.GetMiningTime(ToolLevel, type, floorIndex);
 
         if (time < 0f)
         {
-            Reject(cell, $"채굴 불가: {type} / {floorIndex + 1}층 / 곡괭이 Lv{toolLevel}");
+            Reject(cell, $"채굴 불가: {type} / {floorIndex + 1}층 / 곡괭이 Lv{ToolLevel}");
             return;
         }
 
@@ -107,7 +107,7 @@ public class MiningController : MonoBehaviour
 
         if (time == 0f) //즉시 채굴
         {
-            Debug.Log($"[채굴 즉시] {type} ({cell.x}, {cell.y}) Lv{toolLevel}");
+            Debug.Log($"[채굴 즉시] {type} ({cell.x}, {cell.y}) Lv{ToolLevel}");
             BreakBlock(cell, floorIndex);
             return;
         }
@@ -115,7 +115,7 @@ public class MiningController : MonoBehaviour
         IsMining = true;
         duration = time;
         elapsed = 0f;
-        Debug.Log($"[채굴 시작] {type} ({cell.x}, {cell.y}) {time:F2}초 / 곡괭이 Lv{toolLevel}");
+        Debug.Log($"[채굴 시작] {type} ({cell.x}, {cell.y}) {time:F2}초 / 곡괭이 Lv{ToolLevel}");
         OnMiningStarted?.Invoke(cell, time);
     }
 

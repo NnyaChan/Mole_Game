@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public enum GameState
@@ -8,15 +9,18 @@ public enum GameState
     Ending   //일차 종료 연출 중 (입력/랜턴 정지)
 }
 
+[DefaultExecutionOrder(-100)] //다른 스크립트가 PlayerData를 읽기 전에 세이브를 먼저 불러온다
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; } //싱글톤 사용으로 접근성 높임
 
     public GameState State { get; private set; } = GameState.Playing;
     public bool IsPlaying => State == GameState.Playing;
-    public int Day { get; private set; } = 1; //임시 일차 (세이브 없음, 앱을 끄면 1일차로 초기화)
+    public PlayerData Data { get; private set; } //세이브 대상 플레이어 데이터. 씬을 다시 불러와도 유지된다
+    public int Day => Data.day;
 
     [SerializeField] float blackoutSeconds = 1f; //암전 시간
+    [SerializeField] bool debugSaveKeys = true;  //임시 테스트 키: F5 저장 / F9 불러오기 / F12 초기화 (나중에 설정키로 대체)
 
     private void Awake()
     {
@@ -27,6 +31,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+            Data = SaveSystem.Load() ?? new PlayerData(); //세이브가 없으면 새 게임 (1일차, 0G, 곡괭이 Lv1)
         }
         // 인스턴스가 이미 할당돼있다면(2개 이상이라면) 파괴합니다.
         // (씬을 다시 불러오면 씬 안에 있는 GameManager가 여기로 들어와 파괴됩니다. 정상입니다.)
@@ -64,8 +69,36 @@ public class GameManager : MonoBehaviour
         if (fader != null) yield return fader.FadeOut(blackoutSeconds);
         else yield return new WaitForSecondsRealtime(blackoutSeconds);
 
-        Day++;
+        Data.day++;
+        SaveSystem.Save(Data); //취침 시 자동저장 (현재는 일차 종료 시점에 저장)
+        ReloadScene();
+    }
+
+    void ReloadScene()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //맵/플레이어/랜턴을 새로 시작
+    }
+
+    //임시 테스트 키. 일차 종료 연출 중에는 동작하지 않는다.
+    void Update()
+    {
+        if (!debugSaveKeys || Instance != this || !IsPlaying || Keyboard.current == null) return;
+
+        if (Keyboard.current.f5Key.wasPressedThisFrame)
+        {
+            SaveSystem.Save(Data);
+        }
+        else if (Keyboard.current.f9Key.wasPressedThisFrame)
+        {
+            Data = SaveSystem.Load() ?? new PlayerData();
+            ReloadScene();
+        }
+        else if (Keyboard.current.f12Key.wasPressedThisFrame)
+        {
+            SaveSystem.Delete();
+            Data = new PlayerData();
+            ReloadScene();
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

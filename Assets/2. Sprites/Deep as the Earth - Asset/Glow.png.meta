@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: ea99b5dc3ff0bac47bfbe5f4bf44778b
+guid: 4b6d92460450aca43aa6756267904659
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5148843509089921782
-    second: Deep_Pore_Ground_PNG_0
+      213: -676628513636133388
+    second: Glow_0
+  - first:
+      213: -1707827383094567701
+    second: Glow_1
+  - first:
+      213: -4352344688871199351
+    second: Glow_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -96,17 +102,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Deep_Pore_Ground_PNG_0
+      name: Glow_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 111
-        height: 640
+        x: 3
+        y: 65
+        width: 815
+        height: 813
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a059e94bb12ab88b0800000000000000
-      internalID: -5148843509089921782
+      spriteID: 4f551d7a3f12c96f0800000000000000
+      internalID: -676628513636133388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glow_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 491
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bec96f42b049c48e0800000000000000
+      internalID: -1707827383094567701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glow_2
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 473
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98d26cfa09d5993c0800000000000000
+      internalID: -4352344688871199351
       vertices: []
       indices: 
       edges: []
@@ -125,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Deep_Pore_Ground_PNG_0: -5148843509089921782
+      Glow_0: -676628513636133388
+      Glow_1: -1707827383094567701
+      Glow_2: -4352344688871199351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -20,6 +20,7 @@ B급 병맛 감성의 2D 채굴 게임. 매일 랜덤으로 생성되는 5층 �
 | `Docs/06_Items.md` | 영구 아이템, 소모 아이템, 인벤토리 |
 | `Docs/07_UI.md` | HUD와 화면 목록 |
 | `Docs/08_Balance.md` | 층별 기대 수입, 일차별 진행 목표 (약 15일) |
+| `Docs/09_Save_Data_Test.md` | 세이브 데이터 구조(테스트용 임시안), 저장 시점, 저장 키 |
 | `Docs/Roadmap.md` | 구현 현황, 다음 할 일, 결정이 필요한 항목 |
 
 - 각 문서의 **"미정"** 표시는 아직 기획이 정해지지 않은 부분이다. 임의로 수치를 정하지 말고 사용자에게 먼저 물어볼 것.
@@ -27,20 +28,22 @@ B급 병맛 감성의 2D 채굴 게임. 매일 랜덤으로 생성되는 5층 �
 
 ## 폴더 규칙
 
-- 스크립트: `Assets/1. Scripts/<시스템>/` (Map, Mining, Lantern, UI, ScriptableObject). 매니저류는 `1. Scripts/` 바로 아래.
+- 스크립트: `Assets/1. Scripts/<시스템>/` (Map, Mining, Lantern, UI, ScriptableObject, Save, Economy). 매니저류는 `1. Scripts/` 바로 아래.
 - 데이터 에셋(ScriptableObject): `Assets/3. Prefabs/ScriptableObject/` (`TestFloors.asset`, `TestBlockCatalog.asset`)
 - 타일 에셋: `Assets/4. Materials/Floor/...`
 - 폴더/파일 이름은 Unity 에디터에서 사용자가 직접 바꾼다. (이름 변경 시 `.meta`가 함께 따라가야 한다)
 
 ## 아키텍처 요약
 
-- `GameManager`: 싱글톤 + DontDestroyOnLoad. 상태(Playing/Ending), 일차(Day), 하루 종료 → 암전 → 씬 재로드.
+- `GameManager`: 싱글톤 + DontDestroyOnLoad. 상태(Playing/Ending), `PlayerData` 보유(일차 `Day` 포함), 하루 종료 → 정산 → 암전 → Day+1 → 자동저장 → 씬 재로드. 임시 저장 키 F5/F9/F12.
+- `PlayerData` / `SaveSystem` / `ItemTable` (`Save/`): 세이브 대상 데이터, JSON 저장·불러오기(`persistentDataPath/save.json`), 소모 아이템 ID·최대 보유량. 곡괭이 단계는 `PlayerData.pickaxeLevel`이 기준.
+- `MineralPrices` / `Settlement` (`Economy/`) + `SettlementUI`: 광물 가격표, 정산 계산·반영, 정산 화면. 획득 광물은 `MiningController.OnBlockMined` → `GameManager` → `PlayerData.todayMinerals`.
 - `RandomMapGenerator`: Floor 에셋을 읽어 Tilemap에 `SetTile`로 맵 생성. 오브젝트 위치가 맵 좌상단 기준점(`TopCellY`).
 - `ZoneDetector`: 플레이어 깊이(Depth) 계산. 지상/광산 진입, 귀환 가능 구역 판정.
 - `LanternManager` / `LanternUI`: 광산 안에서만 시간 감소, 0이 되면 `GameManager.EndDay`.
 - `TileBreaker`(조준) → `MiningController`(누르고 있는 시간 계산, 파괴) → `BlockBreakEffect`(균열 애니메이션).
 - `BlockCatalog`(SO): 타일→블록 종류 매핑 + 곡괭이 단계별 채굴 시간표.
-- `PlayerManager`: 좌우 이동, 벽타기(Shift).
+- `PlayerManager`: 좌우 이동, 벽타기(Shift), 앞/뒷모습 모델 전환과 Animator 파라미터 전달. 일차 종료 연출 중에는 입력이 멈춘다.
 - 시스템 간 연결은 `event Action` + `FindAnyObjectByType`로 느슨하게 연결되어 있다. 이 방식을 따를 것.
 
 ## Unity 작업 방식

@@ -20,7 +20,7 @@ public class PlayerData
 
     public int version = CurrentVersion;
     public int day = 1;           //다음에 시작할 일차 (취침 시 저장하므로 저장 시점엔 이미 +1된 값)
-    public int money = 0;         //소지금(G). 마이너스 가능
+    public int money = 0;         //소지금(G). 마이너스 가능, 한도 없음
     public int pickaxeLevel = 1;  //1~6, 기본 곡괭이(Lv1)는 증정
     public int clawLevel = 0;     //0 = 없음, 1~3 = 클로 +1~+3
 

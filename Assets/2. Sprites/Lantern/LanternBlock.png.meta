@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3a1eac821364d364b9053bde57d66477
+guid: 77de82349513f5346845ca2d85340300
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7267264643081774124
-    second: LenternBox_0
+      213: 4655159477770098243
+    second: LenternBlock_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LenternBox_0
+      name: LanternBlock_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 20
-        width: 1425
-        height: 341
+        x: 0
+        y: 0
+        width: 153
+        height: 275
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2425a370b28ad460800000000000000
-      internalID: 7267264643081774124
+      spriteID: 346974581e27a9040800000000000000
+      internalID: 4655159477770098243
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d6580905dc08a354ea7bfb2a121fc804
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LenternBox_0: 7267264643081774124
+      LanternBlock_0: 4655159477770098243
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

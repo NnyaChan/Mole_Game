@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 //MiningController의 이벤트와 Progress만 읽고, 채굴 로직은 건드리지 않는다.
 public class BlockBreakEffect : MonoBehaviour
 {
-    [SerializeField] GameObject effectPrefab; //Bteak_Animation 프리팹
+    [SerializeField] GameObject effectPrefab; //Break_Animation 프리팹
     [Tooltip("비워두면 Animator의 기본 상태를 자동으로 사용. 동작하지 않으면 Animator 창의 상태 이름을 적을 것")]
     [SerializeField] string stateName = "";
 

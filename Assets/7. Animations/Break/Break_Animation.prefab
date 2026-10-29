@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8885643890793914057}
   - component: {fileID: 3925671678033609167}
   m_Layer: 0
-  m_Name: Bteak_Animation
+  m_Name: Break_Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

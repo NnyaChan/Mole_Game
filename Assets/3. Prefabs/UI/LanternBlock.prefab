@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7241449309435470524}
   - component: {fileID: 6896777634646702885}
   m_Layer: 5
-  m_Name: LenternBlock
+  m_Name: LanternBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

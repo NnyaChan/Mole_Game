@@ -1,10 +1,6 @@
-using System;
-using System.Xml.Serialization;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {

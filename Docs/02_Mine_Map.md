@@ -44,7 +44,7 @@
 ## 구역 판정 (`ZoneDetector`) ✅ 구현됨
 
 - `Depth`: 맵 최상단 줄 = 0, 맵 위(지상) = 음수
-- `InMine` (Depth ≥ 0): 랜턴이 닳는 조건
+- `InMine`: 지상 동굴로 들어가면 켜지고 광산 안 동굴로 나오면 꺼진다. 랜턴이 닳고 포인터가 켜지는 조건 (`Depth`와 무관)
 - `Zone.Surface`: Depth < 4 (상단 4칸 이내 또는 맵 밖) → 귀환 성공 판정
 - `Zone.Underground`: 그 아래 → 조난 판정
 

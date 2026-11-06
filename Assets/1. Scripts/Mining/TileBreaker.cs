@@ -24,6 +24,8 @@ public class TileBreaker : MonoBehaviour
     //마우스 버튼이 한 번 떼어진 것을 확인한 뒤부터 입력을 받는다.
     bool armed = false;
 
+    ZoneDetector zone; //광산 입장 상태 확인용 (포인터 표시 조건)
+
     public Vector3Int TargetCell => targetCell; //MiningController가 읽는 타겟 셀
     public bool IsArmed => armed;
 
@@ -43,6 +45,7 @@ public class TileBreaker : MonoBehaviour
     void Awake()
     {
         if (generator == null) generator = FindAnyObjectByType<RandomMapGenerator>();
+        zone = FindAnyObjectByType<ZoneDetector>();
     }
 
     void Update()
@@ -52,9 +55,10 @@ public class TileBreaker : MonoBehaviour
             armed = true;
         }
 
-        //일차 종료 연출(정산/암전) 중에는 조준 포인터를 숨기고 조준 갱신을 멈춘다.
+        //포인터는 광산 안에서만 켠다. 일차 종료 연출(정산/암전) 중에는 포인터를 숨기고 조준 갱신을 멈춘다.
         bool locked = GameManager.Instance != null && !GameManager.Instance.IsPlaying;
-        if (pointer.enabled == locked) pointer.enabled = !locked;
+        bool showPointer = zone != null && zone.InMine && !locked;
+        if (pointer.gameObject.activeSelf != showPointer) pointer.gameObject.SetActive(showPointer);
         if (locked) return;
 
         worldMouseTrans = Camera.main.ScreenToWorldPoint(mouseTrans); //월드좌표로 좌표변경

@@ -20,8 +20,8 @@ public class ZoneDetector : MonoBehaviour
     //맵 최상단 줄로부터의 깊이. 최상단 줄 = 0, 맵 위(지상) = 음수
     public int Depth { get; private set; } = -1;
 
-    //맵 영역 안에 들어와 있는가? (랜턴이 닳는 조건)
-    public bool InMine => Depth >= 0;
+    //동굴 상호작용으로 광산에 들어와 있는가? (랜턴이 닳고 포인터가 켜지는 조건, 씬을 다시 불러오면 지상에서 시작)
+    public bool InMine { get; private set; } = false;
 
     //종료 시 판정용. 최상단 returnableRows줄 이내 또는 맵 밖이면 지상
     public Zone Zone => (Depth < returnableRows) ? Zone.Surface : Zone.Underground;
@@ -29,7 +29,6 @@ public class ZoneDetector : MonoBehaviour
     public event Action<bool> OnInMineChanged;
     public event Action<Zone> OnZoneChanged;
 
-    bool lastInMine;
     Zone lastZone = Zone.Surface;
 
     void Awake()
@@ -48,18 +47,20 @@ public class ZoneDetector : MonoBehaviour
             if (logDepth) Debug.Log($"[깊이] {Depth}");
         }
 
-        if (InMine != lastInMine)
-        {
-            lastInMine = InMine;
-            Debug.Log(InMine ? "[구역] 광산 진입 (랜턴 소모 시작)" : "[구역] 광산 밖으로 나옴 (랜턴 정지)");
-            OnInMineChanged?.Invoke(InMine);
-        }
-
         if (Zone != lastZone)
         {
             lastZone = Zone;
             Debug.Log($"[구역] 판정 변경: {(Zone == Zone.Surface ? "지상(귀환 가능)" : "지하(귀환 불가)")}");
             OnZoneChanged?.Invoke(Zone);
         }
+    }
+
+    //동굴 상호작용으로 광산에 들어가거나 나올 때 호출된다.
+    public void SetInMine(bool value)
+    {
+        if (InMine == value) return;
+        InMine = value;
+        Debug.Log(InMine ? "[구역] 광산 진입 (랜턴 소모 시작)" : "[구역] 광산 밖으로 나옴 (랜턴 정지)");
+        OnInMineChanged?.Invoke(InMine);
     }
 }

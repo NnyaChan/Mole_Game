@@ -44,7 +44,7 @@ public class DepthGauge : MonoBehaviour
         if (label != null && zone.Depth != lastDepth)
         {
             lastDepth = zone.Depth;
-            label.text = zone.InMine
+            label.text = zone.Depth >= 0
                 ? $"{floor.GetFloorIndex(zone.Depth) + 1}층 / {zone.Depth + 1}칸"
                 : "지상";
         }

@@ -5,6 +5,14 @@ using UnityEngine;
 public class CaveEntrance : Interactable
 {
     [SerializeField] Transform destination; //이동할 위치
+    [SerializeField] bool entersMine;       //광산으로 들어가는 동굴이면 체크 (지상 쪽 동굴), 나오는 동굴이면 해제
+
+    ZoneDetector zone;
+
+    void Awake()
+    {
+        zone = FindAnyObjectByType<ZoneDetector>();
+    }
 
     public override void Interact(PlayerManager player)
     {
@@ -15,6 +23,7 @@ public class CaveEntrance : Interactable
         }
 
         player.TeleportTo(destination.position);
+        if (zone != null) zone.SetInMine(entersMine);
         Debug.Log($"[상호작용] {name} → {destination.name}");
     }
 }

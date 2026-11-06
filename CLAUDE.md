@@ -39,8 +39,8 @@ B급 병맛 감성의 2D 채굴 게임. 매일 랜덤으로 생성되는 5층 �
 - `PlayerData` / `SaveSystem` / `ItemTable` (`Save/`): 세이브 대상 데이터, JSON 저장·불러오기(`persistentDataPath/save.json`), 소모 아이템 ID·최대 보유량. 곡괭이 단계는 `PlayerData.pickaxeLevel`이 기준.
 - `MineralPrices` / `Settlement` (`Economy/`) + `SettlementUI`: 광물 가격표, 정산 계산·반영, 정산 화면. 획득 광물은 `MiningController.OnBlockMined` → `GameManager` → `PlayerData.todayMinerals`.
 - `RandomMapGenerator`: Floor 에셋을 읽어 Tilemap에 `SetTile`로 맵 생성. 오브젝트 위치가 맵 좌상단 기준점(`TopCellY`).
-- `ZoneDetector`: 플레이어 깊이(Depth) 계산. 지상/광산 진입, 귀환 가능 구역 판정.
-- `LanternManager` / `LanternUI`: 광산 안에서만 시간 감소, 0이 되면 `GameManager.EndDay`.
+- `ZoneDetector`: 플레이어 깊이(Depth) 계산, 귀환 가능 구역 판정. 광산 입장 상태(`InMine`)는 `CaveEntrance`가 `SetInMine`으로 설정한다.
+- `LanternManager` / `LanternUI`: `InMine`일 때만 시간 감소, 0이 되면 `GameManager.EndDay`.
 - `TileBreaker`(조준) → `MiningController`(누르고 있는 시간 계산, 파괴) → `BlockBreakEffect`(균열 애니메이션).
 - `BlockCatalog`(SO): 타일→블록 종류 매핑 + 곡괭이 단계별 채굴 시간표.
 - `PlayerInteractor` + `Interactable` (`Interaction/`): E키로 주변 트리거 영역을 찾아 실행. `CaveEntrance`(지상↔광산 이동), `Bed`(일차 종료).

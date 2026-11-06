@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         if (Instance == this) Debug.Log($"[{Day}일차 시작]");
     }
 
-    //일차 종료. 랜턴이 모두 떨어졌을 때 호출된다.
+    //일차 종료. 랜턴이 모두 떨어졌을 때와 침대에서 잠들 때 호출된다.
     public void EndDay(Zone zoneAtEnd)
     {
         if (State != GameState.Playing) return; //중복 호출 방지
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     IEnumerator EndDayRoutine(Zone zoneAtEnd)
     {
         string result = (zoneAtEnd == Zone.Surface) ? "지상(귀환 성공)" : "지하(조난)";
-        Debug.Log($"[{Day}일차 종료] 랜턴 소진 시점 상태: {result}");
+        Debug.Log($"[{Day}일차 종료] 종료 시점 상태: {result}");
 
         //정산 (밤 흐름: 정산 → 잠자기). 정산 화면이 씬에 없으면 화면 없이 바로 처리한다.
         SettlementReport report = Settlement.Calculate(Data);

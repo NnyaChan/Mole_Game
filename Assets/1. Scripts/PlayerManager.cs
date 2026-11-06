@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -81,7 +82,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     //일차 종료 연출(정산/암전) 중에는 입력을 받지 않고 멈춘다.
-    bool InputLocked => GameManager.Instance != null && !GameManager.Instance.IsPlaying;
+    public bool InputLocked => GameManager.Instance != null && !GameManager.Instance.IsPlaying;
 
     void Update()
     {
@@ -107,14 +108,10 @@ public class PlayerManager : MonoBehaviour
                 Debug.Log("벽타기 모드 종료");
             }
         }
-        else if (IsGrounded())
+        else if (!isClimb || IsGrounded()) //벽타기 중에는 막힌 칸에 공중으로 파고들지 않도록 바닥에서만 좌우 이동
         {
             this.transform.Translate(new Vector3(inputVec.x, 0, 0) * speed * Time.deltaTime);
             walking = inputVec.x != 0;
-        }
-        else
-        {
-            Debug.Log("바닥없음");
         }
 
         UpdateAnimation(walking, climbMove);
@@ -190,6 +187,7 @@ public class PlayerManager : MonoBehaviour
     public void ClimbCheck()
     {
         if (InputLocked) return;
+        if (backTilemap.WorldToCell(this.transform.position).y > generator.TopCellY) return; //지상(맵 최상단 위)에서는 벽타기를 시작할 수 없다
         if (climbTime > 0 && !isClimb)
         {
             climbTime = 1f; // 벽타기 시작 후 1초동안 벽타기 중지를 불가하게 만듬.
@@ -202,6 +200,24 @@ public class PlayerManager : MonoBehaviour
             }
             Debug.Log("벽타기 모드 시작");
         }
+    }
+
+    //해당 위치(월드 좌표)로 순간이동한다. 벽타기 중이었다면 일반 상태로 되돌린다.
+    public void TeleportTo(Vector3 position)
+    {
+        if (isClimb)
+        {
+            isClimb = false;
+            SetClimbModel(false);
+            rigid.gravityScale = 1;
+        }
+        climbTime = 0f;
+        rigid.linearVelocity = Vector2.zero;
+
+        position.z = this.transform.position.z;
+        Vector3 delta = position - this.transform.position;
+        this.transform.position = position;
+        CinemachineCore.OnTargetObjectWarped(this.transform, delta); //카메라가 감쇠로 끌려가지 않고 바로 따라오게 한다
     }
 
     //벽타기로 해당 위치(월드 좌표)로 이동할 수 있는지 판정한다.

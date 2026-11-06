@@ -28,7 +28,7 @@ B급 병맛 감성의 2D 채굴 게임. 매일 랜덤으로 생성되는 5층 �
 
 ## 폴더 규칙
 
-- 스크립트: `Assets/1. Scripts/<시스템>/` (Map, Mining, Lantern, UI, ScriptableObject, Save, Economy). 매니저류는 `1. Scripts/` 바로 아래.
+- 스크립트: `Assets/1. Scripts/<시스템>/` (Map, Mining, Lantern, UI, ScriptableObject, Save, Economy, Interaction). 매니저류는 `1. Scripts/` 바로 아래.
 - 데이터 에셋(ScriptableObject): `Assets/3. Prefabs/ScriptableObject/` (`TestFloors.asset`, `TestBlockCatalog.asset`)
 - 타일 에셋: `Assets/4. Materials/Floor/...`
 - 폴더/파일 이름은 Unity 에디터에서 사용자가 직접 바꾼다. (이름 변경 시 `.meta`가 함께 따라가야 한다)
@@ -43,6 +43,7 @@ B급 병맛 감성의 2D 채굴 게임. 매일 랜덤으로 생성되는 5층 �
 - `LanternManager` / `LanternUI`: 광산 안에서만 시간 감소, 0이 되면 `GameManager.EndDay`.
 - `TileBreaker`(조준) → `MiningController`(누르고 있는 시간 계산, 파괴) → `BlockBreakEffect`(균열 애니메이션).
 - `BlockCatalog`(SO): 타일→블록 종류 매핑 + 곡괭이 단계별 채굴 시간표.
+- `PlayerInteractor` + `Interactable` (`Interaction/`): E키로 주변 트리거 영역을 찾아 실행. `CaveEntrance`(지상↔광산 이동), `Bed`(일차 종료).
 - `PlayerManager`: 좌우 이동, 벽타기(Shift), 앞/뒷모습 모델 전환과 Animator 파라미터 전달. 일차 종료 연출 중에는 입력이 멈춘다.
 - 시스템 간 연결은 `event Action` + `FindAnyObjectByType`로 느슨하게 연결되어 있다. 이 방식을 따를 것.
 

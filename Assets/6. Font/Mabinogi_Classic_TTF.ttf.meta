@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df36471e38d25f441a049264a2ca8ac7
+guid: 29f853e2baae849409fb502449fd999b
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - LevelUp
+  - Mabinogi_Classic
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

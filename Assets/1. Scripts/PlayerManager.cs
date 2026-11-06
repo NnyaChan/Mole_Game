@@ -38,9 +38,11 @@ public class PlayerManager : MonoBehaviour
     Animator backAnimator;
     MiningController mining;
     float mineClipLength; //채굴 클립 원래 길이(초). 채굴 시간에 맞춰 재생 속도를 정하는 데 쓴다
+    InputAction climbAction; //벽타기 키(Shift). 방향키 입력 시점에 눌림 상태를 확인한다
 
     void Start()
     {
+        climbAction = GetComponent<PlayerInput>().actions["Climbing"];
         frontTilemap = FindAnyObjectByType<TileBreaker>().frontTilemap;
         generator = FindAnyObjectByType<RandomMapGenerator>();
         mining = FindAnyObjectByType<MiningController>();
@@ -134,6 +136,7 @@ public class PlayerManager : MonoBehaviour
             isFliped = false;
             ApplyFlip();
         }
+        ClimbCheck(); //Shift를 먼저 누른 경우 방향키 입력 시점에 벽타기를 시작한다
     }
 
     //벽타기 여부에 따라 앞모습/뒷모습 모델 중 하나만 켠다.
@@ -184,11 +187,13 @@ public class PlayerManager : MonoBehaviour
         model.transform.localScale = s;
     }
 
+    //Shift와 방향키가 함께 눌려 있으면 벽타기를 시작한다. 두 키를 누르는 순서는 상관없다.
     public void ClimbCheck()
     {
         if (InputLocked) return;
+        if (climbAction == null || climbAction.ReadValue<float>() <= 0f || inputVec == Vector2.zero) return;
         if (backTilemap.WorldToCell(this.transform.position).y > generator.TopCellY) return; //지상(맵 최상단 위)에서는 벽타기를 시작할 수 없다
-        if (climbTime > 0 && !isClimb)
+        if (!isClimb)
         {
             climbTime = 1f; // 벽타기 시작 후 1초동안 벽타기 중지를 불가하게 만듬.
             isClimb = true;
